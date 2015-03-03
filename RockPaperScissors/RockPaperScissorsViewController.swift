@@ -13,11 +13,13 @@ class RockPaperScissorsViewController: UIViewController {
     @IBOutlet weak var rockButton: UIButton!
     @IBOutlet weak var paperButton: UIButton!
     @IBOutlet weak var scissorsButton: UIButton!
+    
     var match: RPSMatch!
-
+    var history = [RPSMatch]()
+    
     @IBAction func makeYourMove(sender: UIButton) {
         
-        // Here the RPS enum holds a player's move
+        // The RPS enum holds a player's move
         switch (sender) {
         case self.rockButton:
             throwDown(RPS.Rock)
@@ -35,11 +37,14 @@ class RockPaperScissorsViewController: UIViewController {
     
     func throwDown(playersMove: RPS)
     {
-        // Here the RPS enum generates the opponent's move
+        // The RPS enum generates the opponent's move
         let computersMove = RPS()
         
-        // =The RPSMatch struct stores the results of a match
+        // The RPSMatch struct stores the results of a match
         self.match = RPSMatch(p1: playersMove, p2: computersMove)
+        
+        // Add the match to the history
+        history.append(match)
         
         //Here are the 3 ways of presenting a View Controller
         
@@ -68,6 +73,11 @@ class RockPaperScissorsViewController: UIViewController {
         //Notice that this code works for both Scissors and Paper
         let controller = segue.destinationViewController as ResultViewController
         controller.match = self.match
+    }
+   
+    @IBAction func showHistory(sender: AnyObject) {
+      //TODO: Present HistoryViewController
+
     }
     
 }
