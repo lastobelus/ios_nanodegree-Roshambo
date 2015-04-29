@@ -15,6 +15,8 @@ class RockPaperScissorsViewController: UIViewController {
     @IBOutlet weak var scissorsButton: UIButton!
     
     var match: RPSMatch!
+    
+    // Here is the history array which will hold the results of each match that is played in a session.
     var history = [RPSMatch]()
     
     @IBAction func makeYourMove(sender: UIButton) {
@@ -43,7 +45,7 @@ class RockPaperScissorsViewController: UIViewController {
         // The RPSMatch struct stores the results of a match
         self.match = RPSMatch(p1: playersMove, p2: computersMove)
         
-        // Add the match to the history
+        // Here we add a match to the history array. 
         history.append(match)
         
         //Here are the 3 ways of presenting a View Controller
