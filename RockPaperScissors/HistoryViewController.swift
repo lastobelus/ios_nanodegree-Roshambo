@@ -19,7 +19,8 @@ class HistoryViewController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    let twoImageHistoryNib = UINib(nibName: "TwoImageHistoryCell", bundle: nil)
+    tableView.registerNib(twoImageHistoryNib, forCellReuseIdentifier: "TwoImageHistory")
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = false
 
@@ -56,8 +57,10 @@ class HistoryViewController: UITableViewController {
       cell.textLabel?.text = presenter.messageForMatch()
     case .TwoImageHistory:
       let presenter = TwoImageHistoryRPSResultPresenter( match:rpsMatch)
-      cell.textLabel?.text = presenter.messageForMatch()
-      print("TBD: TwoImage")
+      if let cell = cell as? TwoImageHistoryCell {
+        cell.winner?.text = presenter.messageForMatch()
+        print("TBD: TwoImage")
+      }
     }
 
     return cell
