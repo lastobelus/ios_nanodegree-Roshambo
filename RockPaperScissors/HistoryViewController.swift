@@ -1,4 +1,4 @@
-//
+ //
 //  HistoryViewController.swift
 //  RockPaperScissors
 //
@@ -9,6 +9,11 @@
 import UIKit
 
 class HistoryViewController: UITableViewController {
+
+  enum HistoryPresentation: String {
+    case BasicHistory, TwoImageHistory
+  }
+  var historyPresentation = HistoryPresentation.TwoImageHistory
 
   var history = [RPSMatch]()
 
@@ -43,11 +48,17 @@ class HistoryViewController: UITableViewController {
   }
 
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("BasicRoshamboResult", forIndexPath: indexPath)
-
+    let cell = tableView.dequeueReusableCellWithIdentifier(historyPresentation.rawValue, forIndexPath: indexPath)
     let rpsMatch = history[indexPath.row]
-    let presenter = BasicHistoryRPSResultPresenter( match:rpsMatch)
-    cell.textLabel?.text = presenter.messageForMatch()
+    switch historyPresentation {
+    case .BasicHistory:
+      let presenter = BasicHistoryRPSResultPresenter( match:rpsMatch)
+      cell.textLabel?.text = presenter.messageForMatch()
+    case .TwoImageHistory:
+      let presenter = TwoImageHistoryRPSResultPresenter( match:rpsMatch)
+      cell.textLabel?.text = presenter.messageForMatch()
+      print("TBD: TwoImage")
+    }
 
     return cell
   }
