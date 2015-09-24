@@ -18,7 +18,7 @@ class InPlayRPSResultPresenter: RPSResultPresenter {
   func messageForMatch() -> String {
 
     // Handle the tie
-    if match.p1 == match.p2 {
+    if match.result == .Tie {
       return "It's a tie!"
     }
 
@@ -27,7 +27,14 @@ class InPlayRPSResultPresenter: RPSResultPresenter {
   }
 
   func resultString() -> String {
-    return match.p1.defeats( match.p2 ) ? "You Win!" : "You Lose!"
+    switch match.result {
+    case .PlayerOne:
+      return "You Win!"
+    case .PlayerTwo:
+      return "You Lose!"
+    case .Tie:
+      return "It's a tie."
+    }
   }
 
   func victoryModeString( gesture: RPS ) -> String {
@@ -45,19 +52,40 @@ class InPlayRPSResultPresenter: RPSResultPresenter {
 
     var name = ""
 
-    switch ( match.winner ) {
-    case .Rock:
-      name = "RockCrushesScissors"
-    case .Paper:
-      name = "PaperCoversRock"
-    case .Scissors:
-      name = "ScissorsCutPaper"
+
+    if match.result == .Tie {
+      name = "itsATie"
+    } else {
+      switch ( match.winner ) {
+      case .Rock:
+        name = "RockCrushesScissors"
+      case .Paper:
+        name = "PaperCoversRock"
+      case .Scissors:
+        name = "ScissorsCutPaper"
+      }
     }
 
-    if match.p1 == match.p2 {
-      name = "itsATie"
-    }
     return UIImage( named: name )!
+  }
+
+  func imageForPlayerOne() -> UIImage {
+    return UIImage( named: imageNameForGesture(match.p1) )!
+  }
+
+  func imageForPlayerTwo() -> UIImage {
+    return UIImage( named: imageNameForGesture(match.p2) )!
+  }
+
+  func imageNameForGesture( gesture: RPS ) -> String {
+    switch ( gesture ) {
+    case .Rock:
+      return "rock"
+    case .Scissors:
+      return "scissors"
+    case .Paper:
+      return "paper"
+    }
   }
 
 }

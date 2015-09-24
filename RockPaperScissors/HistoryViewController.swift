@@ -58,8 +58,10 @@ class HistoryViewController: UITableViewController {
     case .TwoImageHistory:
       let presenter = TwoImageHistoryRPSResultPresenter( match:rpsMatch)
       if let cell = cell as? TwoImageHistoryCell {
+        cell.result = rpsMatch.result
         cell.winner?.text = presenter.messageForMatch()
-        print("TBD: TwoImage")
+        cell.playerOneImage?.image = presenter.imageForPlayerOne()
+        cell.playerTwoImage?.image = presenter.imageForPlayerTwo()
       }
     }
 

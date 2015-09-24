@@ -11,10 +11,13 @@ import Foundation
 class BasicHistoryRPSResultPresenter: InPlayRPSResultPresenter {
   override func messageForMatch() -> String {
     // Handle the tie
-    if match.p1 == match.p2 {
+    switch match.result {
+    case .PlayerOne:
+      return "Player"
+    case .PlayerTwo:
+      return "Computer"
+    case .Tie:
       return "Tie"
-    } else {
-      return match.p1.defeats(match.p2) ? "Player" : "Computer"
     }
   }
 }

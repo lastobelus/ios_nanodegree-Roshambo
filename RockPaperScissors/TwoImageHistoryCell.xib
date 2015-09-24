@@ -14,14 +14,22 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSK-M0-4eb">
-                        <rect key="frame" x="15" y="0.0" width="305" height="43.5"/>
+                        <rect key="frame" x="15" y="0.0" width="97" height="43.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nNc-hk-S4E">
+                        <rect key="frame" x="120" y="0.0" width="50.5" height="43.5"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UgJ-dj-L4E">
+                        <rect key="frame" x="170" y="0.0" width="50.5" height="43.5"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="playerOneImage" destination="nNc-hk-S4E" id="pEq-KC-mKe"/>
+                <outlet property="playerTwoImage" destination="UgJ-dj-L4E" id="oje-CD-WFR"/>
                 <outlet property="winner" destination="mSK-M0-4eb" id="BAY-zH-KMH"/>
             </connections>
         </tableViewCell>

@@ -11,6 +11,11 @@ import UIKit
 class TwoImageHistoryCell: UITableViewCell {
 
   @IBOutlet weak var winner: UILabel!
+  @IBOutlet weak var playerOneImage: UIImageView!
+  @IBOutlet weak var playerTwoImage: UIImageView!
+
+  var result: RPSMatch.Result!
+
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
@@ -18,8 +23,20 @@ class TwoImageHistoryCell: UITableViewCell {
 
   override func setSelected(selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
-
     // Configure the view for the selected state
   }
 
+  override func updateConstraints() {
+    super.updateConstraints()
+    if let result = result {
+      switch result {
+      case .PlayerOne:
+        print("PlayerOne")
+      case .PlayerTwo:
+        print("PlayerTwo")
+      case .Tie:
+        print("Tie")
+      }
+    }
+  }
 }

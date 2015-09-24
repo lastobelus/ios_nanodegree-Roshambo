@@ -12,4 +12,6 @@ protocol RPSResultPresenter {
   init( match:RPSMatch )
   func messageForMatch() -> String
   func imageForMatch() -> UIImage
+  func imageForPlayerOne() -> UIImage
+  func imageForPlayerTwo() -> UIImage
 }
