@@ -17,7 +17,7 @@ class RockPaperScissorsViewController: UIViewController {
   enum SegueMode {
     case Manual, Triggered, Auto
   }
-  let segueMode:SegueMode = .Manual
+  let segueMode:SegueMode = .Triggered
 
   var match: RPSMatch!
 
@@ -76,10 +76,16 @@ class RockPaperScissorsViewController: UIViewController {
   }
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
+    switch segue.identifier! {
+    case "TriggeredHistorySegue", "AutoHistorySegue":
+      let navigationController = segue.destinationViewController as! UINavigationController
+      let historyController = navigationController.topViewController as! HistoryViewController
+      historyController.history = history
+    default:
+      let controller = segue.destinationViewController as! ResultViewController
+      controller.match = self.match
+    }
     //Notice that this code works for both Scissors and Paper
-    let controller = segue.destinationViewController as! ResultViewController
-    controller.match = self.match
   }
 
   @IBAction func showHistory(sender: AnyObject) {
@@ -88,10 +94,12 @@ class RockPaperScissorsViewController: UIViewController {
     case .Manual:
       let storyboard = UIStoryboard(name: "Main", bundle: nil)
       let historyViewController = storyboard.instantiateViewControllerWithIdentifier("HistoryViewController") as! HistoryViewController
+      historyViewController.history = history
       let navigationController = UINavigationController(rootViewController: historyViewController)
       presentViewController(navigationController, animated: true, completion: nil)
     case .Triggered:
-      print("TBD Triggered Segue")
+      print("Triggered Segue")
+      performSegueWithIdentifier("TriggeredHistorySegue", sender: self)
     case .Auto:
       print("TBD Auto Segue")
     }
