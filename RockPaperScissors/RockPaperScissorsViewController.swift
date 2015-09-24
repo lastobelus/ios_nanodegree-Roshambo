@@ -17,7 +17,7 @@ class RockPaperScissorsViewController: UIViewController {
   enum SegueMode {
     case Manual, Triggered, Auto
   }
-  let segueMode:SegueMode = .Triggered
+  let segueMode:SegueMode = .Auto
 
   var match: RPSMatch!
 
@@ -101,7 +101,7 @@ class RockPaperScissorsViewController: UIViewController {
       print("Triggered Segue")
       performSegueWithIdentifier("TriggeredHistorySegue", sender: self)
     case .Auto:
-      print("TBD Auto Segue")
+      print("Auto Segue")
     }
   }
 

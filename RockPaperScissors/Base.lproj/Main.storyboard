@@ -30,6 +30,7 @@
                                 <state key="normal" title="History"/>
                                 <connections>
                                     <action selector="showHistory:" destination="iYZ-Mq-4iF" eventType="touchUpInside" id="XPh-hz-IIz"/>
+                                    <segue destination="XvK-yx-fAP" kind="modal" identifier="AutoHistorySegue" id="N3o-TJ-ftS"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="nny-ab-Axb">
@@ -209,6 +210,7 @@
         <image name="scissors" width="75" height="65"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="N3o-TJ-ftS"/>
         <segue reference="VKf-O8-YvW"/>
     </inferredMetricsTieBreakers>
 </document>
