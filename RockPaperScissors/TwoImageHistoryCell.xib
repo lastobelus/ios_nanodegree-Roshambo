@@ -27,13 +27,13 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nNc-hk-S4E">
                         <rect key="frame" x="120" y="0.0" width="50.5" height="43.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="nNc-hk-S4E" secondAttribute="height" multiplier="50:43" id="OBs-7Z-fOR"/>
+                            <constraint firstAttribute="width" secondItem="nNc-hk-S4E" secondAttribute="height" multiplier="50:44" id="OBs-7Z-fOR"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UgJ-dj-L4E">
                         <rect key="frame" x="161" y="0.0" width="50.5" height="43.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="UgJ-dj-L4E" secondAttribute="height" multiplier="50:43" id="p9L-sb-IMN"/>
+                            <constraint firstAttribute="width" secondItem="UgJ-dj-L4E" secondAttribute="height" multiplier="50:44" id="p9L-sb-IMN"/>
                         </constraints>
                     </imageView>
                 </subviews>

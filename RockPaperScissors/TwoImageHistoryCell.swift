@@ -10,6 +10,28 @@ import UIKit
 
 class TwoImageHistoryCell: UITableViewCell {
 
+  struct Preferences {
+    let winnerImageOverlap:CGFloat = -10
+    let tieImageMargin:CGFloat = 2
+
+    let winnerLeft:CGFloat = 1
+    let winnerRight:CGFloat = -1
+
+    let winnerImageMargin:CGFloat = -5
+    let loserImageMargin:CGFloat = 0
+
+    let winnerImageShadowX:CGFloat = 3.5
+    let winnerImageShadowY:CGFloat = 1.5
+    let winnerImageShadowOpacity:Float = 0.7
+    let winnerImageShadowRadius:CGFloat = 3
+
+    let playerOneWinColor = UIColor(red: 0.05, green: 0.7, blue: 0.2, alpha: 1.0)
+    let playerTwoWinColor = UIColor.redColor()
+    let tieColor = UIColor.darkGrayColor()
+
+    static let i = Preferences()
+  }
+
   @IBOutlet weak var winner: UILabel!
   @IBOutlet weak var playerOneImage: UIImageView!
   @IBOutlet weak var playerTwoImage: UIImageView!
@@ -35,15 +57,18 @@ class TwoImageHistoryCell: UITableViewCell {
       switch result {
       case .PlayerOne:
         print("PlayerOne")
-        playerImageSpacing.constant = -10
-        winnerize(playerOneImage, direction: 1, margin: playerOneMargin)
+        playerImageSpacing.constant = Preferences.i.winnerImageOverlap
+        winner.textColor = Preferences.i.playerOneWinColor
+        winnerize(playerOneImage, direction: Preferences.i.winnerLeft, margin: playerOneMargin)
         loserize(playerTwoImage, margin: playerTwoMargin)
       case .PlayerTwo:
-        playerImageSpacing.constant = -10
+        winner.textColor = Preferences.i.playerTwoWinColor
+        playerImageSpacing.constant = Preferences.i.winnerImageOverlap
         loserize(playerOneImage, margin: playerOneMargin)
-        winnerize(playerTwoImage, direction: -1, margin: playerTwoMargin)
+        winnerize(playerTwoImage, direction: Preferences.i.winnerRight, margin: playerTwoMargin)
       case .Tie:
-        playerImageSpacing.constant = 2
+        winner.textColor = Preferences.i.tieColor
+        playerImageSpacing.constant = Preferences.i.tieImageMargin
         loserize(playerOneImage, margin: playerOneMargin)
         loserize(playerTwoImage, margin: playerTwoMargin)
       }
@@ -54,16 +79,16 @@ class TwoImageHistoryCell: UITableViewCell {
     self.contentView.sendSubviewToBack(view)
     let layer = view.layer
     layer.shadowOpacity = 0.0;
-    margin.constant = 0
+    margin.constant = Preferences.i.loserImageMargin
   }
 
-  func winnerize(view: UIView, direction: Int, margin: NSLayoutConstraint) {
+  func winnerize(view: UIView, direction: CGFloat, margin: NSLayoutConstraint) {
     self.contentView.bringSubviewToFront(view)
     let layer = view.layer
     layer.shadowColor = UIColor.blackColor().CGColor
-    layer.shadowOffset = CGSize(width: 4*direction, height: 0)
-    layer.shadowOpacity = 0.7
-    layer.shadowRadius = 3
-    margin.constant = -5
+    layer.shadowOffset = CGSize(width: Preferences.i.winnerImageShadowX*direction, height: Preferences.i.winnerImageShadowY)
+    layer.shadowOpacity = Preferences.i.winnerImageShadowOpacity
+    layer.shadowRadius = Preferences.i.winnerImageShadowRadius
+    margin.constant = Preferences.i.winnerImageMargin
   }
 }
