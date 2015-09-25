@@ -1,5 +1,7 @@
 ![Alt text](/screenshot.png?raw=true "Screen Shot")
 
+[Discussion](https://discussions.udacity.com/t/solutions-challenge-app-l4-roshambo-with-history/13579/33)
+
 I learned a few extra things along the way:
 
 * I used a custom subclass of UITableViewCell with a nib file, to make it easier to layout the cell. This requires doing:
