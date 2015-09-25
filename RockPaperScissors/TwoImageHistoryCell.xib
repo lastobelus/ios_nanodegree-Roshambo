@@ -2,6 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,23 +15,51 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSK-M0-4eb">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSK-M0-4eb">
                         <rect key="frame" x="15" y="0.0" width="97" height="43.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="XVt-68-Ut5"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nNc-hk-S4E">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nNc-hk-S4E">
                         <rect key="frame" x="120" y="0.0" width="50.5" height="43.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="nNc-hk-S4E" secondAttribute="height" multiplier="50:43" id="OBs-7Z-fOR"/>
+                        </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UgJ-dj-L4E">
-                        <rect key="frame" x="170" y="0.0" width="50.5" height="43.5"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UgJ-dj-L4E">
+                        <rect key="frame" x="161" y="0.0" width="50.5" height="43.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="UgJ-dj-L4E" secondAttribute="height" multiplier="50:43" id="p9L-sb-IMN"/>
+                        </constraints>
                     </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="mSK-M0-4eb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7Xw-Ke-yAi"/>
+                    <constraint firstItem="nNc-hk-S4E" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="HXj-Ni-QNr"/>
+                    <constraint firstItem="mSK-M0-4eb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="NkB-RE-6JF"/>
+                    <constraint firstItem="nNc-hk-S4E" firstAttribute="leading" secondItem="mSK-M0-4eb" secondAttribute="trailing" constant="8" id="STV-ms-N8L"/>
+                    <constraint firstItem="UgJ-dj-L4E" firstAttribute="leading" secondItem="nNc-hk-S4E" secondAttribute="trailing" constant="-10" id="UqC-AE-IFc"/>
+                    <constraint firstItem="UgJ-dj-L4E" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="W67-SI-z4d"/>
+                    <constraint firstItem="nNc-hk-S4E" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="aSF-LZ-194"/>
+                    <constraint firstItem="UgJ-dj-L4E" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kqY-Be-7yc"/>
+                    <constraint firstItem="nNc-hk-S4E" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="umA-4e-bo4"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="aSF-LZ-194"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="playerImageSpacing" destination="UqC-AE-IFc" id="60c-SF-Wc3"/>
                 <outlet property="playerOneImage" destination="nNc-hk-S4E" id="pEq-KC-mKe"/>
+                <outlet property="playerOneMargin" destination="HXj-Ni-QNr" id="GK0-IG-gYg"/>
                 <outlet property="playerTwoImage" destination="UgJ-dj-L4E" id="oje-CD-WFR"/>
+                <outlet property="playerTwoMargin" destination="W67-SI-z4d" id="NmG-Lp-tru"/>
                 <outlet property="winner" destination="mSK-M0-4eb" id="BAY-zH-KMH"/>
             </connections>
         </tableViewCell>

@@ -62,6 +62,7 @@ class HistoryViewController: UITableViewController {
         cell.winner?.text = presenter.messageForMatch()
         cell.playerOneImage?.image = presenter.imageForPlayerOne()
         cell.playerTwoImage?.image = presenter.imageForPlayerTwo()
+        cell.arrangeViewForResult()
       }
     }
 
