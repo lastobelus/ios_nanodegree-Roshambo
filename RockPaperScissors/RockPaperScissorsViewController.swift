@@ -60,10 +60,10 @@ class RockPaperScissorsViewController: UIViewController {
       // Get the storyboard and ResultViewController
       let storyboard = UIStoryboard (name: "Main", bundle: nil)
       let resultVC = storyboard.instantiateViewControllerWithIdentifier("ResultViewController") as! ResultViewController
-
-      // Communicate the match
       resultVC.match = self.match
-      self.presentViewController(resultVC, animated: true, completion: nil)
+      if let navigationController = self.navigationController {
+        navigationController.pushViewController(resultVC, animated: true)
+      }
     }
 
       // 2nd Way: Code plus Segue
@@ -76,6 +76,7 @@ class RockPaperScissorsViewController: UIViewController {
   }
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
     switch segue.identifier! {
     case "TriggeredHistorySegue", "AutoHistorySegue":
       let navigationController = segue.destinationViewController as! UINavigationController
